@@ -157,7 +157,7 @@
         noticeContainer.classList.add("hidden");
         logoRow.classList.add("hidden");
 
-        pageContainer.classList.add("focusBackground");
+        // pageContainer.classList.add("focusBackground");
 
         isFocus = true;
         cursorDefault();
@@ -174,7 +174,7 @@
         noticeContainer.classList.add("visible");
         logoRow.classList.add("visible");
 
-        pageContainer.classList.remove("focusBackground");
+        // pageContainer.classList.remove("focusBackground");
 
         isFocus = false;
         cursorPointer();
@@ -240,17 +240,6 @@
         var pageContainer = document.getElementById("pageContainer");
 
         var clickerElem2 = document.getElementById("pageContainer");
-
-        // Checkers rof Focus/Unfocus login form
-        // formLogin.addEventListener("focus", focusForm, false);
-        // formLogin.addEventListener("blur", unfocusForm, false);
-        // formPass.addEventListener("focus", focusForm, false);
-        // formPass.addEventListener("blur", unfocusForm, false);
-        //
-        // formLogin.addEventListener("focus", zoomForm, false);
-        // formLogin.addEventListener("blur", unzoomForm, false);
-        // formPass.addEventListener("focus", zoomForm, false);
-        // formPass.addEventListener("blur", unzoomForm, false);
 
         // Checkers for showing password and submit button
         formLogin.addEventListener("input", checkVisibility, false);
@@ -331,53 +320,6 @@
         lwbg3.addEventListener("click", function () {
           showPopup(logotypes[3]);
         }, false);
-
-
-
-        // for (i = 0; i < logotypes.length; i++) {
-        //   (function() {
-        //     // Create html elements for block with logotypes (logotypes and circle backgrounds)
-        //     var logoWrapper = document.createElement("div");
-        //     var logoBackground = document.createElement("div");
-        //     var logoBackgroundWrapper = document.createElement("div");
-        //     var logo = document.createElement("div");
-        //
-        //     // Add style classes to elements
-        //     logoWrapper.classList.add("logoWrapper");
-        //     logoBackground.classList.add("logoBackground");
-        //     logoBackground.style.backgroundColor = logotypes[i].bgColor;
-        //     logoBackgroundWrapper.classList.add("logoBackgroundWrapper");
-        //     logo.classList.add("logo");
-        //     logo.style.backgroundColor = logotypes[i].bgColor;
-        //     logo.innerText = "Click me";
-        //
-        //     // Add unique id to logotypes backgrounds (will need to show popup with unique content)
-        //     logoBackground.setAttribute("id", logotypes[i].bgId);
-        //     logoBackgroundWrapper.setAttribute("id", logotypes[i].wrapperBgId);
-        //
-        //     // Push elements to DOM
-        //     logoRow.appendChild(logoWrapper);
-        //     logotypes[i].bg = logoWrapper.appendChild(logoBackground);
-        //     logotypes[i].wrapperBg = logoWrapper.appendChild(logoBackgroundWrapper);
-        //     logoWrapper.appendChild(logo);
-        //
-        //     // Create event handlers to show/hide circle backgrounds on hover logotypes
-        //     var elem = logotypes[i].bg;
-        //     var logo = logotypes[i];
-        //
-        //     logotypes[i].wrapperBg.addEventListener("mouseenter", function () {
-        //       showBG(elem);
-        //     }, false);
-        //     logotypes[i].wrapperBg.addEventListener("mouseleave", function () {
-        //       hideBG(elem);
-        //     }, false);
-        //
-        //     // Create event handler to show popup when logotype clicked
-        //     logotypes[i].wrapperBg.addEventListener("click", function () {
-        //       showPopup(logo);
-        //     }, false);
-        //   }());
-        // }
 
       }
 

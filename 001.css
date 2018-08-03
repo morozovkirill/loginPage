@@ -41,6 +41,9 @@ body {
 .headerLogo {
   margin-left: 50px;
 }
+.headerLogo:hover {
+  cursor: pointer;
+}
 .headerContacts {
   margin-right: 50px;
   text-align: right;
@@ -67,7 +70,7 @@ body {
 }
 .pageTitle {
   font-size: 56px;
-  font-weight: bold;
+  font-weight: normal;
   color: white;
   padding-bottom: 30px;
 }
