@@ -1,12 +1,12 @@
 
-<svg width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="43px" height="43px" viewBox="0 0 43 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-11" fill-rule="nonzero" stroke="#FFFFFF">
+        <g id="Group-11-Copy" transform="translate(1.000000, 1.000000)" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="2">
             <path d="M7.5,0.5 L40.5,0.5 L40.5,32.5305176 C40.5,37.8435059 39.5,40.5 37.5,40.5 C29.7424316,40.5 15.4924316,40.5 4.5,40.5 C6.5,40.5 7.5,37.8423665 7.5,32.5270996 L7.5,0.5 Z" id="Rectangle-3"></path>
-            <rect id="Rectangle-4" x="12.5" y="5.5" width="22" height="9"></rect>
+            <rect id="Rectangle-4" x="13" y="6" width="21" height="8"></rect>
             <path d="M12.5,20.5 L34.5,20.5" id="Line-3" stroke-linecap="round"></path>
             <path d="M12.5,26.5 L34.5,26.5" id="Line-3" stroke-linecap="round"></path>
             <path d="M12.5,32.5 L34.5,32.5" id="Line-3" stroke-linecap="round"></path>

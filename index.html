@@ -38,7 +38,6 @@
       var links = ["Узнать все возможности", "Больше новостей", "Больше советов ", "Веб-сайт"];
 
       // Pack content into array of objects. Each object - logotype and popup with their own props
-      const logotypesCount = 7;
       var logotypes = [];
 
       for (i = 0; i < logotypesCount; i++) {
@@ -109,6 +108,7 @@
           popupContent.appendChild(popupText);
           popupContent.appendChild(popupButton);
 
+          // Exclution for top banner
           if (logo.wrapperBgId === "lwbg3") {
             var popupButton2 = document.createElement("button");
             popupButton2.classList.add("popupButton");
@@ -118,7 +118,6 @@
 
 
           // Create event handlers to hide popup
-
           popupCloseIcon.addEventListener("click", function () {
             hidePopup(shadowElem)
           }, false);
@@ -174,8 +173,6 @@
         noticeContainer.classList.add("visible");
         logoRow.classList.add("visible");
 
-        // pageContainer.classList.remove("focusBackground");
-
         isFocus = false;
         cursorPointer();
 
@@ -213,15 +210,11 @@
       }
 
       function validateButton() {
-        // focusForm();
-
         if (formLogin.value && formPass.value) {
-          // formButton.classList.remove("invalid");
           formButton.classList.add("formButtonValid");
         }
         else {
           formButton.classList.remove("formButtonValid");
-          // formButton.classList.add("invalid");
         }
       }
 
@@ -372,7 +365,6 @@
         <div class="logoBackground" id="lbg0" style="background-color: #0A2973;"></div>
         <div class="logoBackgroundWrapper" id="lwbg0"></div>
         <div class="logo">
-          <!--<div style="width: 100px; height: 100px; border: 1px solid white; border-radius: 100px; margin-top: -10px; margin-bottom: 10px;"></div>-->
           <div style="margin-bottom: 20px;"><img src="icon_features.svg"></div>
           <div class="activityTitle">Возможности интернет-банка</div>
           <div class="activityText">Оплата мобильной связи, интернета, ЖКХ и&nbsp;других услуг без&nbsp;очередей и&nbsp;в&nbsp;любое&nbsp;время</div>
@@ -382,7 +374,6 @@
         <div class="logoBackground" id="lbg1" style="background-color: #0A2973;"></div>
         <div class="logoBackgroundWrapper" id="lwbg1"></div>
         <div class="logo">
-          <!--<div style="width: 100px; height: 100px; border: 1px solid white; border-radius: 100px; margin-top: -10px; margin-bottom: 10px;"></div>-->
           <div style="margin-bottom: 20px;"><img src="icon_news.svg"></div>
           <div class="activityTitle">Новости</div>
           <div class="activityText">Большое обновление Мобильного банка для iOS</div>
@@ -392,7 +383,6 @@
         <div class="logoBackground" id="lbg2" style="background-color: #0A2973;"></div>
         <div class="logoBackgroundWrapper" id="lwbg2"></div>
         <div class="logo">
-          <!--<div style="width: 100px; height: 100px; border: 1px solid white; border-radius: 100px; margin-top: -10px; margin-bottom: 10px;"></div>-->
           <div style="margin-bottom: 20px;"><img src="icon_safety.svg"></div>
           <div class="activityTitle">Рекомендации по безопасности</div>
           <div class="activityText">Адрес Интернет-банка обязательно должен начинаться с&nbsp;&laquo;<span style="color: rgba(255, 255, 255, .8)">https://</span>&raquo;</div>
@@ -401,6 +391,5 @@
     </div>
 
   </div>
-  <!--<div class="logoBlock" id="logoRow"></div>-->
   </body>
 </html>
