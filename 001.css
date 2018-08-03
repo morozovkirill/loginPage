@@ -1,0 +1,406 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Roboto", "Segoe UI", "SansSerif";
+  font-weight: lighter;
+  /*background: radial-gradient(circle, #009FDF, #0A2973);*/
+  background: radial-gradient(circle, rgba(18, 181, 247, 1), rgba(10, 41, 115, 1));
+}
+.cursorDefault {
+  cursor: default !important;
+}
+.focusBackground {
+  background: radial-gradient(circle, #009FDF, #0A2973);
+}
+.pageContainer {
+  /*position: absolute;*/
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(10, 41, 115, .5);
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+  /*background-color: rgba(10, 41, 115, 1);*/
+}
+.pageHeader {
+  /*position: absolute;*/
+  width: 100%;
+  flex-basis: 8%;
+  display: flex;
+  /*flex-direction: row;*/
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  height: 50px;
+}
+.headerLogo {
+  margin-left: 50px;
+}
+.headerContacts {
+  margin-right: 50px;
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.headerContactsPhone {
+  font-size: 24px;
+  color: white;
+  font-weight: lighter;
+}
+.headerLinks {
+  font-size: 12px;
+  text-decoration: underline;
+  color: rgba(255, 255, 255, .8);
+  cursor: pointer;
+  margin-right: 20px;
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+.headerLinks:hover {
+  color: white;
+}
+.pageTitle {
+  font-size: 56px;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 30px;
+}
+.noticeContainer {
+  padding: 20px 20px;
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 4px;
+  /*box-sizing: padding-box;*/
+  /*background-color: rgba(255, 255, 255, 1);*/
+}
+.noticeContainer:hover{
+  background-color: rgba(10, 41, 115, 1);
+  border: 1px solid rgba(10, 41, 115, 1);
+  /*background-color: #009FDF;*/
+  /*border: none;*/
+  /*cursor: pointer;*/
+}
+.pageSubTitle {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  line-height: 24px;
+  color: white;
+  text-align: center;
+  align-items: center;
+}
+.noticeButton {
+  margin-top: 0px;
+  background-color: rgba(10, 41, 115, 0);
+  border: 1px solid rgba(255, 255, 255, .8);
+}
+.noticeButton:hover {
+  background-color: #009FDF;
+  border: 1px solid #009FDF;
+  color: white;
+}
+.formContainer {
+  width: 832px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.formTitle {
+  text-align: left;
+  font-size: 14px;
+  color: rgba(255, 255, 255, .8);
+  padding-bottom: 5px;
+}
+.formComment {
+  font-size: 12px;
+  color: rgba(255, 255, 255, .5);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.formComment:hover {
+  color: rgba(255, 255, 255, .8);
+}
+.formComment2 {
+  font-size: 14px;
+  color: rgba(255, 255, 255, .5);
+  margin-top: 8px;
+}
+.formPassContainer {
+  position: absolute;
+  margin-left: 316px;
+  /*margin-top: 20px;*/
+}
+.formButtonContainer {
+  position: absolute;
+  margin-left: 632px;
+}
+.formButton {
+  width: 200px;
+  height: 50px;
+  font-size: 21px;
+  font-weight: normal;
+  border: none;
+  cursor: default;
+  background-color: rgba(10, 41, 115, .2);
+  color: rgba(255, 255, 255, .2);
+  /*margin-top: 30px;*/
+  margin-top: 21px;
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+.formButton:hover {
+  background-color: rgba(10, 41, 115, .2);
+  color: rgba(255, 255, 255, .2);
+}
+.formButtonValid {
+  background-color: rgba(10, 41, 115, 1);
+  color: rgba(255, 255, 255, 1);
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+.formButtonValid:hover {
+  background-color: rgba(9, 54, 127, 1);
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+button {
+  height: 40px;
+  margin-top: 10px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, .2);
+  color: rgba(255, 255, 255, .8);
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 4px;
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+button:hover {
+  background-color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .9);
+}
+input {
+  width: 300px;
+  height: 50px;
+  font-size: 32px;
+  border: none;
+  padding-left: 8px;
+  margin-right: 16px;
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+input:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.formLoginContainer {
+  z-index: 1;
+}
+.formLogin {
+  left: 500px;
+  width: 832px;
+}
+.resizeLogin {
+  width: 300px;
+}
+.formCheckboxContainer {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: row;
+}
+.formCheckbox {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+.formCheckboxTitle {
+  padding-left: 8px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+.visible {
+  /*visibility: visible;*/
+  /*position: relative;*/
+  opacity: 1;
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+.hidden {
+  /*visibility: hidden;*/
+  opacity: 0;
+  /*position: absolute;*/
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+.activityTitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, .8);
+}
+.activityText {
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, .5);
+}
+
+
+.logo {
+  width: 250px;
+  height: 200px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logoBlock {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 250px;
+  margin-bottom: 30px;
+}
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoBackground {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 250px;
+  z-index: -100;
+  opacity: 0;
+}
+.logoBackgroundShow {
+  opacity: 100;
+  transform: scale(1.1);
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+.logoBackgroundHide {
+  opacity: 0;
+  transform: scale(.9);
+  transition-duration: 220ms;
+  transition-timing-function: ease-out;
+}
+.logoBackgroundWrapper {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  cursor: pointer;
+}
+.shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 100;
+  background-color: rgba(10, 41, 115, .8);
+  animation: showShadow 150ms ease-out;
+}
+@keyframes showShadow {
+  from {opacity: 0}
+  to {opacity: .8}
+}
+.clicker {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.popupContainer {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  max-width: 700px;
+  max-height: 500px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.popup {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: black;
+  opacity: 1;
+  animation: showPopup 150ms ease-out;
+  font-size: 16px;
+  color: #333333;
+}
+.popupContent {
+  padding: 50px;
+}
+@keyframes showPopup {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+.popupCloseIcon {
+  position: absolute;
+  margin-left: 570px;
+}
+.popupCloseIcon:hover {
+  cursor: pointer;
+}
+.popupHeader {
+  font-size: 48px;
+  font-weight: bold;
+  padding-bottom: 24px;
+}
+.popupButton {
+  margin-top: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
+  height: 40px;
+  border: none;
+  background-color: rgba(0, 159, 223, 1);
+  font-size: 16px;
+  color: white;
+  border-radius: 4px;
+}
+.popupButton:hover {
+  background-color: rgba(18, 181, 247, 1);
+  cursor: pointer;
+}
+/*button:focus {*/
+  /*outline: none;*/
+/*}*/
+ul {
+  line-height: 24px;
+}
+.newsDate {
+  line-height: 36px;
+  color: rgba(0, 0, 0, .4);
+}
+.newsTitle {
+  display: inline-block;
+  margin-left: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.newsTitle:hover {
+  color: rgba(193, 0, 36, 1);
+}
+
+button:focus {
+  outline: none;
+}
+
