@@ -5,13 +5,15 @@ html, body {
 body {
   font-family: "Roboto", "Segoe UI", "SansSerif";
   font-weight: lighter;
-  background: radial-gradient(circle, rgba(18, 181, 247, 1), rgba(10, 41, 115, 1));
+  background: url("photo-1467810563316-b5476525c0f9.jpeg");
+  /*background-position: center center;*/
 }
 .cursorDefault {
   cursor: default !important;
 }
 .focusBackground {
-  background: radial-gradient(circle, #009FDF, #0A2973);
+  /*background: radial-gradient(circle, #009FDF, #0A2973);*/
+  background-color: rgba(0, 0, 0, .5);
 }
 .pageContainer {
   width: 100%;
@@ -20,7 +22,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(10, 41, 115, .5);
+  /*background-color: rgba(0, 0, 0, .2);*/
   transition-duration: 220ms;
   transition-timing-function: ease-out;
 }
@@ -68,6 +70,7 @@ body {
   font-weight: normal;
   color: white;
   padding-bottom: 30px;
+  text-align: center;
 }
 .noticeContainer {
   padding: 20px 20px;
@@ -81,13 +84,17 @@ body {
   border: 1px solid rgba(10, 41, 115, 1);
 }
 .pageSubTitle {
-  display: flex;
-  flex-direction: row;
   font-size: 18px;
   line-height: 24px;
-  color: white;
+  color: rgba(255, 255, 255, .8);
   text-align: center;
-  align-items: center;
+}
+.pageSubTitleLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.pageSubTitleLink:hover {
+  color: rgba(255, 255, 255, 1);
 }
 .noticeButton {
   margin-top: 0px;
@@ -113,6 +120,7 @@ body {
   padding-bottom: 5px;
 }
 .formComment {
+  display: inline-block;
   font-size: 12px;
   color: rgba(255, 255, 255, .5);
   text-decoration: underline;
@@ -140,26 +148,31 @@ body {
   height: 50px;
   font-size: 21px;
   font-weight: normal;
-  border: none;
+  /*border: none;*/
   cursor: default;
-  background-color: rgba(10, 41, 115, .2);
-  color: rgba(255, 255, 255, .2);
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .3);
   margin-top: 21px;
   transition-duration: 220ms;
   transition-timing-function: ease-out;
 }
 .formButton:hover {
-  background-color: rgba(10, 41, 115, .2);
-  color: rgba(255, 255, 255, .2);
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .3);
 }
 .formButtonValid {
-  background-color: rgba(10, 41, 115, 1);
+  background-color: rgba(0, 159, 223, 1);
+  border: none;
+  /*border-color: rgba(255, 255, 255, .5);*/
   color: rgba(255, 255, 255, 1);
   transition-duration: 220ms;
   transition-timing-function: ease-out;
 }
 .formButtonValid:hover {
-  background-color: rgba(9, 54, 127, 1);
+  background-color: rgb(7, 182, 237);
+  border: none;
   color: rgba(255, 255, 255, 1);
   cursor: pointer;
 }
@@ -184,7 +197,7 @@ button:hover {
 input {
   width: 300px;
   height: 50px;
-  font-size: 32px;
+  font-size: 24px;
   border: none;
   padding-left: 8px;
   margin-right: 16px;
@@ -233,19 +246,19 @@ input:focus {
 }
 .activityTitle {
   font-size: 16px;
-  color: rgba(255, 255, 255, .8);
+  /*color: rgba(255, 255, 255, .8);*/
 }
 .activityText {
   margin-top: 8px;
   font-size: 14px;
-  color: rgba(255, 255, 255, .5);
+  /*color: rgba(255, 255, 255, .5);*/
 }
 .logo {
-  width: 250px;
+  width: 130px;
   height: 200px;
   text-align: center;
   font-size: 12px;
-  color: white;
+  /*color: white;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -263,6 +276,10 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: rgba(255, 255, 255, .8);
+}
+.logoWrapper:hover{
+  color: #333333;
 }
 .logoBackground {
   position: absolute;

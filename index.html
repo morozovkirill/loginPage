@@ -9,7 +9,7 @@
 
       // Content
       var colors = ["#ffffff", "#ffffff", "#ffffff", "ffffff"];
-      var headers = ["Возможности\nинтернет-банка", "Новости", "Рекомендации по безопасности", "Интернет-банк\nВТБ-Онлайн"];
+      var headers = ["Возможности\nинтернет-банка", "Новости", "Рекомендации по безопасности", "Интернет-банк"];
       var texts = [
         "<ul>" +
         "<li>Оплата мобильной связи, интернета, ЖКХ и других услуг без очередей<br>и в любое время" +
@@ -17,27 +17,32 @@
         "<li>Удобное открытие и управление вкладами" +
         "<li>Оформление заявки на получение кредита" +
         "</ul>",
-        "<span class='newsDate'>20.12.17</span><span class='newsTitle'>В Новый год с новым ВТБ-Онлайн</span><br>" +
+        "<span class='newsDate'>20.12.17</span><span class='newsTitle'>В Новый год с новым интернет-банком</span><br>" +
         "<span class='newsDate'>11.10.17</span><span class='newsTitle'>Удобные переводы</span><br>" +
         "<span class='newsDate'>14.08.17</span><span class='newsTitle'>Большое обновление Мобильного банка для iOS</span><br>" +
         "<span class='newsDate'>31.07.17</span><span class='newsTitle'>Сезонный вклад «Быстрый доход»</span><br>" +
-        "<span class='newsDate'>20.12.17</span><span class='newsTitle'>В Новый год с новым ВТБ-Онлайн</span><br>" +
+        "<span class='newsDate'>20.12.17</span><span class='newsTitle'>В Новый год с новым интернет-банком</span><br>" +
         "<span class='newsDate'>07.07.17</span><span class='newsTitle'>Комиксы о правилах финансовой безопасности</span><br>",
         "<ul>" +
         "<li>Храните в тайне пароли, коды для подтверждения операций и CVV-код (номер на обратной стороне карты)" +
-        "<li>Регулярно обновляйте пароль для входа в Интернет-банк по требованию Банка, направленному в автоматическом режиме" +
+        "<li>Регулярно обновляйте пароль для входа в интернет-банк по требованию Банка, направленному в автоматическом режиме" +
         "<li>В случае утери телефона немедленно заблокируйте SIM-карту или Интернет-банк" +
         "</ul>",
         "С 1 января ВТБ Банк Москвы и ВТБ24 объединились и стали одним банком&nbsp;— ВТБ. К вашим услугам теперь новый и удобный интернет-банк ВТБ-Онлайн." +
         "<ul>" +
         "<li>Быстрая онлайн регистрация по номеру карты" +
         "<li>Сохранение выписок по проведенным ранее операциям" +
-        "<li>Переводы клиентам ВТБ по номеру телефона, оформление вкладов и кредитов и другие удобные преимущества" +
+        "<li>Переводы клиентам банка по номеру телефона, оформление вкладов и кредитов и другие удобные преимущества" +
         "</ul>"
       ];
       var links = ["Узнать все возможности", "Больше новостей", "Больше советов ", "Веб-сайт"];
+      var images = [
+        ["icon_features.svg", "icon_features_black.svg"],
+        ["icon_news.svg", "icon_news_black.svg"],
+        ["icon_safety.svg", "icon_safety_black.svg"],
+      ];
 
-      var logotypesCount = 7;
+      var logotypesCount = 3;
 
       // Pack content into array of objects. Each object - logotype and popup with their own props
       var logotypes = [];
@@ -49,22 +54,27 @@
           wrapperBg: "",
           wrapperBgId: "lwbg" + i,
           bgColor: colors[i],
-          Header: headers[i],
-          Text: texts[i],
-          Link: links[i],
+          header: headers[i],
+          text: texts[i],
+          link: links[i],
+          img: "",
+          imgNames: images[i],
+          imgId: "icon" + i,
         }
       }
 
       // Show logotype circle background on hover
-      function showBG(elem) {
-        elem.classList.remove("logoBackgroundHide");
-        elem.classList.add("logoBackgroundShow");
+      function showBG(id) {
+        logotypes[id].bg.classList.remove("logoBackgroundHide");
+        logotypes[id].bg.classList.add("logoBackgroundShow");
+        logotypes[id].img.src = logotypes[id].imgNames[1];
       }
 
       // Remove logotype circle background
-      function hideBG(elem) {
-        elem.classList.remove("logoBackgroundVisible");
-        elem.classList.add("logoBackgroundHide");
+      function hideBG(id) {
+        logotypes[id].bg.classList.remove("logoBackgroundVisible");
+        logotypes[id].bg.classList.add("logoBackgroundHide");
+        logotypes[id].img.src = logotypes[id].imgNames[0];
       }
 
       // Show popup if clicked on logotype
@@ -95,9 +105,9 @@
 
           // Add content
           popupCloseIcon.innerHTML = "<img src='icon_close.svg'>";
-          popupHeader.innerText = logo.Header;
-          popupText.innerHTML = logo.Text;
-          popupButton.innerText = logo.Link;
+          popupHeader.innerText = logo.header;
+          popupText.innerHTML = logo.text;
+          popupButton.innerText = logo.link;
 
           // Push elements to DOM
           var shadowElem = document.body.appendChild(shadow);
@@ -109,15 +119,6 @@
           popupContent.appendChild(popupHeader);
           popupContent.appendChild(popupText);
           popupContent.appendChild(popupButton);
-
-          // Exclution for top banner
-          if (logo.wrapperBgId === "lwbg3") {
-            var popupButton2 = document.createElement("button");
-            popupButton2.classList.add("popupButton");
-            popupButton2.innerText = "Мобильные приложения";
-            popupContent.appendChild(popupButton2);
-          }
-
 
           // Create event handlers to hide popup
           popupCloseIcon.addEventListener("click", function () {
@@ -138,27 +139,25 @@
       }
 
       function cursorPointer() {
-        lwbg0.classList.remove("cursorDefault");
-        lwbg1.classList.remove("cursorDefault");
-        lwbg2.classList.remove("cursorDefault");
-        lwbg3.classList.remove("cursorDefault");
+        for (i = 0; i < logotypes.length; i++) {
+          logotypes[i].wrapperBg.classList.remove("cursorDefault");
+        }
       }
 
       function cursorDefault() {
-        lwbg0.classList.add("cursorDefault");
-        lwbg1.classList.add("cursorDefault");
-        lwbg2.classList.add("cursorDefault");
-        lwbg3.classList.add("cursorDefault");
+        for (i = 0; i < logotypes.length; i++) {
+          logotypes[i].wrapperBg.classList.add("cursorDefault");
+        }
       }
 
       function focusForm() {
-        noticeContainer.classList.remove("visible");
+        pageTitle.classList.remove("visible");
         logoRow.classList.remove("visible");
 
-        noticeContainer.classList.add("hidden");
+        pageTitle.classList.add("hidden");
         logoRow.classList.add("hidden");
 
-        // pageContainer.classList.add("focusBackground");
+        pageContainer.classList.add("focusBackground");
 
         isFocus = true;
         cursorDefault();
@@ -169,11 +168,13 @@
       }
 
       function unfocusForm () {
-        noticeContainer.classList.remove("hidden");
+        pageTitle.classList.remove("hidden");
         logoRow.classList.remove("hidden");
 
-        noticeContainer.classList.add("visible");
+        pageTitle.classList.add("visible");
         logoRow.classList.add("visible");
+
+        pageContainer.classList.remove("focusBackground");
 
         isFocus = false;
         cursorPointer();
@@ -184,8 +185,9 @@
       function checkVisibility () {
         validateButton();
 
-        if (formLogin.value) {
+        if (formLogin.value || formPass.value) {
           focusForm();
+          pageSubTitle.classList.add("hidden");
 
           formLogin.classList.add("resizeLogin");
 
@@ -220,10 +222,25 @@
         }
       }
 
+      function validateForm(event) {
+        event.stopImmediatePropagation();
+        if (!formPass.value) {
+          pageSubTitle.innerText = "Вы не ввели пароль";
+          pageSubTitle.classList.remove("hidden");
+        }
+        if (!formLogin.value) {
+          pageSubTitle.innerText = "Вы не ввели логин";
+          pageSubTitle.classList.remove("hidden");
+        }
+        if (formPass.value && formLogin.value) {
+          pageSubTitle.innerHTML = "Клиента с таким логином не существует. <span class='pageSubTitleLink'>Забыли логин</span> или <span class='pageSubTitleLink'>хотите открыть счет</span>?";
+          pageSubTitle.classList.remove("hidden");
+        }
+      }
+
       window.onload = function() {
 
         var logoRow = document.getElementById("logoRow");
-        var noticeContainer = document.getElementById("noticeContainer")
         var formLogin = document.getElementById("formLogin");
         var formComment = document.getElementById("formComment");
         var formPass = document.getElementById("formPass");
@@ -233,6 +250,12 @@
         var formCheckbox = document.getElementById("formCheckbox");
         var formTitle = document.getElementById("formTitle");
         var pageContainer = document.getElementById("pageContainer");
+        var pageTitle = document.getElementById("pageTitle");
+        var pageSubTitle = document.getElementById("pageTitle");
+
+        var iconFeatures = document.getElementById("iconFeatures");
+        var iconNews = document.getElementById("iconNews");
+        var iconSafety = document.getElementById("iconSafety");
 
         var clickerElem2 = document.getElementById("pageContainer");
 
@@ -259,63 +282,47 @@
         formTitle.addEventListener("click", function(event) {
           event.stopImmediatePropagation();
         }, false);
-        formButton.addEventListener("click", function(event) {
-          event.stopImmediatePropagation();
-        }, false);
+        formButton.addEventListener("click", function(event) { validateForm(event) }, false);
+        // formButton.addEventListener("click", function(event) {
+        //   event.stopImmediatePropagation();
+        // }, false);
 
         formLogin.addEventListener("focus", checkVisibility, false);
+        formPass.addEventListener("focus", checkVisibility, false);
         clickerElem2.addEventListener("click", checkVisibility, false);
 
         // Checker to unfocus login form
         clickerElem2.addEventListener("click", unfocusForm, false);
-        formLogin.addEventListener("focus", focusForm, false);
-        formPass.addEventListener("focus", focusForm, false);
 
-
-        var lbg0 = document.getElementById("lbg0");
-        var lbg1 = document.getElementById("lbg1");
-        var lbg2 = document.getElementById("lbg2");
-        var lwbg0 = document.getElementById("lwbg0");
-        var lwbg1 = document.getElementById("lwbg1");
-        var lwbg2 = document.getElementById("lwbg2");
-        var lwbg3 = document.getElementById("lwbg3");
+        for (i = 0; i < logotypes.length; i ++) {
+          logotypes[i].bg = document.getElementById(logotypes[i].bgId);
+          logotypes[i].wrapperBg = document.getElementById(logotypes[i].wrapperBgId);
+          logotypes[i].img = document.getElementById(logotypes[i].imgId);
+        }
 
         // Create event handlers to show/hide circle backgrounds on hover logotypes
-        lwbg0.addEventListener("mouseenter", function () {
-          showBG(lbg0);
-        }, false);
-        lwbg0.addEventListener("mouseleave", function () {
-          hideBG(lbg0);
-        }, false);
+        for (i = 0; i < logotypes.length; i++) {
+          (function() {
+            var id = i;
+            logotypes[i].wrapperBg.addEventListener("mouseenter", function () {
+              showBG(id);
+            }, false);
 
-        lwbg1.addEventListener("mouseenter", function () {
-          showBG(lbg1);
-        }, false);
-        lwbg1.addEventListener("mouseleave", function () {
-          hideBG(lbg1);
-        }, false);
-
-        lwbg2.addEventListener("mouseenter", function () {
-          showBG(lbg2);
-        }, false);
-        lwbg2.addEventListener("mouseleave", function () {
-          hideBG(lbg2);
-        }, false);
+            logotypes[i].wrapperBg.addEventListener("mouseleave", function () {
+              hideBG(id);
+            }, false);
+          })();
+        }
 
         // Create event handler to show popup when logotype clicked
-        lwbg0.addEventListener("click", function () {
-          showPopup(logotypes[0]);
-        }, false);
-        lwbg1.addEventListener("click", function () {
-          showPopup(logotypes[1]);
-        }, false);
-        lwbg2.addEventListener("click", function () {
-          showPopup(logotypes[2]);
-        }, false);
-        lwbg3.addEventListener("click", function () {
-          showPopup(logotypes[3]);
-        }, false);
-
+        for (i = 0; i < logotypes.length; i++) {
+          (function() {
+          var logotype = logotypes[i];
+          logotypes[i].wrapperBg.addEventListener("click", function () {
+            showPopup(logotype);
+          }, false);
+          })();
+        }
       }
 
     </script>
@@ -323,31 +330,24 @@
   <body>
   <div id="pageContainer" class="pageContainer">
     <div class="pageHeader">
-      <div class="headerLogo"><img src="vtb_logo.svg"></div>
+      <!--<div class="headerLogo"><img src="vtb_logo.svg"></div>-->
+      <div class="headerLogo" style="color: white;">Логотип</div>
       <div class="headerContacts">
         <div class="headerLinks">Форма обратной связи</div>
         <div class="headerLinks">Онлайн-звонок</div>
         <div class="headerContactsPhone">8 (495) 925-80-00</div>
       </div>
     </div>
-    <div id="noticeContainer" class="noticeContainer">
-      <div class="pageSubTitle">
-        <div><img src="bm_logo.svg"></div>
-        <div style="padding-right: 40px; padding-left: 40px;">
-          <div>ВТБ Банк Москвы и ВТБ24 объединились и стали одним банком — ВТБ.</div>
-          <div style="font-size: 14px; color: rgba(255, 255, 255, .8);">К вашим услугам теперь новый и удобный интернет-банк ВТБ-Онлайн.</div>
-        </div>
-        <div><button id="lwbg3" class="noticeButton">Подробнее</button></div>
-      </div>
+    <div>
+      <div id="pageTitle" class="pageTitle">Вход в интернет-банк</div>
+      <div id="pageSubTitle" class="pageSubTitle">Введите адрес электронной почты или логин, выданный банком</div>
     </div>
     <div id="formContainer" class="formContainer">
-      <div class="pageTitle">Вход в интернет-банк</div>
       <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: flex-start;">
         <div class="formLoginContainer">
           <div class="formTitle">Логин</div>
           <div><input class="formLogin" id="formLogin"></div>
-          <div class="formComment2">Адрес электронной почты или логин,<br>выданный банком</div>
-          <div id="formComment" class="formComment">Забыли логин или пароль?</div>
+          <div id="formComment"><span class="formComment">Забыли логин или пароль?</span></div>
         </div>
         <div id="formPassContainer" class="formPassContainer hidden">
           <div class="formTitle">Пароль</div>
@@ -364,30 +364,27 @@
     </div>
     <div class="logoBlock" id="logoRow">
       <div class="logoWrapper">
-        <div class="logoBackground" id="lbg0" style="background-color: #0A2973;"></div>
+        <div class="logoBackground" id="lbg0" style="background-color: white;"></div>
         <div class="logoBackgroundWrapper" id="lwbg0"></div>
         <div class="logo">
-          <div style="margin-bottom: 20px;"><img src="icon_features.svg"></div>
+          <div style="margin-bottom: 20px;"><img id="icon0" src="icon_features.svg"></div>
           <div class="activityTitle">Возможности интернет-банка</div>
-          <div class="activityText">Оплата мобильной связи, интернета, ЖКХ и&nbsp;других услуг без&nbsp;очередей и&nbsp;в&nbsp;любое&nbsp;время</div>
         </div>
       </div>
       <div class="logoWrapper">
-        <div class="logoBackground" id="lbg1" style="background-color: #0A2973;"></div>
+        <div class="logoBackground" id="lbg1" style="background-color: white;"></div>
         <div class="logoBackgroundWrapper" id="lwbg1"></div>
         <div class="logo">
-          <div style="margin-bottom: 20px;"><img src="icon_news.svg"></div>
+          <div style="margin-bottom: 20px;"><img id="icon1" src="icon_news.svg"></div>
           <div class="activityTitle">Новости</div>
-          <div class="activityText">Большое обновление Мобильного банка для iOS</div>
         </div>
       </div>
       <div class="logoWrapper">
-        <div class="logoBackground" id="lbg2" style="background-color: #0A2973;"></div>
+        <div class="logoBackground" id="lbg2" style="background-color: white;"></div>
         <div class="logoBackgroundWrapper" id="lwbg2"></div>
         <div class="logo">
-          <div style="margin-bottom: 20px;"><img src="icon_safety.svg"></div>
+          <div style="margin-bottom: 20px;"><img id="icon2" src="icon_safety.svg"></div>
           <div class="activityTitle">Рекомендации по безопасности</div>
-          <div class="activityText">Адрес Интернет-банка обязательно должен начинаться с&nbsp;&laquo;<span style="color: rgba(255, 255, 255, .8)">https://</span>&raquo;</div>
         </div>
       </div>
     </div>
