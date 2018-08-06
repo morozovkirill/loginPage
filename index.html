@@ -233,7 +233,8 @@
           pageSubTitle.classList.remove("hidden");
         }
         if (formPass.value && formLogin.value && event.type === "click") {
-          pageSubTitle.innerHTML = "Клиента с таким логином не существует. <span class='pageSubTitleLink'>Забыли логин</span> или <span class='pageSubTitleLink'>хотите открыть счет</span>?";
+          // pageSubTitle.innerHTML = "Неверный логин или пароль. <span class='pageSubTitleLink'>Забыли логин</span> или <span class='pageSubTitleLink'>хотите открыть счет</span>?";
+          pageSubTitle.innerHTML = "Неверный логин или пароль<button class='smallButton'>Восстановить пароль</button>";
           pageSubTitle.classList.remove("hidden");
         }
       }
@@ -331,7 +332,7 @@
       <!--<div class="headerLogo"><img src="vtb_logo.svg"></div>-->
       <div class="headerLogoContainer">
         <div class="headerLogo">Логотип</div>
-        <div><button class="headerButton">Регистрация</button></div>
+        <div><button class="headerButton">Стать клиентом</button></div>
       </div>
       <div class="headerContacts">
         <div class="headerLinks">Форма обратной связи</div>

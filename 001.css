@@ -5,7 +5,7 @@ html, body {
 body {
   font-family: "Roboto", "Segoe UI", "SansSerif";
   font-weight: lighter;
-  background: url("photo-1467810563316-b5476525c0f9.jpeg");
+  background: url("bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   /*background-position: center center;*/
@@ -97,7 +97,7 @@ body {
 }
 .pageSubTitle {
   font-size: 18px;
-  line-height: 24px;
+  line-height: 36px;
   color: rgba(255, 255, 255, .8);
   text-align: center;
 }
@@ -206,6 +206,12 @@ button:hover {
   background-color: rgba(255, 255, 255, .3);
   color: rgba(255, 255, 255, .9);
 }
+.smallButton {
+  margin-top: 0;
+  margin-left: 20px;
+  height: 32px;
+  font-size: 12px;
+}
 input {
   width: 300px;
   height: 50px;
@@ -296,9 +302,9 @@ input:focus {
 }
 .logoBackground {
   position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 250px;
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
   z-index: -100;
   opacity: 0;
 }
@@ -316,8 +322,8 @@ input:focus {
 }
 .logoBackgroundWrapper {
   position: absolute;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   cursor: pointer;
 }
 .shadow {
