@@ -6,6 +6,7 @@ body {
   font-family: "Roboto", "Segoe UI", "SansSerif";
   font-weight: lighter;
   background: url("photo-1467810563316-b5476525c0f9.jpeg");
+  background-color: rgb(17, 29, 46);
   background-repeat: no-repeat;
   background-size: cover;
   /*background-position: center center;*/
@@ -418,8 +419,12 @@ ul {
 .newsTitle:hover {
   color: rgba(193, 0, 36, 1);
 }
-
 button:focus {
   outline: none;
 }
-
+.svgBlack {
+  fill: #000;
+}
+.svgWhite {
+  fill: #fff;
+}
