@@ -232,7 +232,7 @@
           pageSubTitle.innerText = "Вы не ввели логин";
           pageSubTitle.classList.remove("hidden");
         }
-        if (formPass.value && formLogin.value) {
+        if (formPass.value && formLogin.value && event.type === "click") {
           pageSubTitle.innerHTML = "Клиента с таким логином не существует. <span class='pageSubTitleLink'>Забыли логин</span> или <span class='pageSubTitleLink'>хотите открыть счет</span>?";
           pageSubTitle.classList.remove("hidden");
         }
@@ -282,10 +282,9 @@
         formTitle.addEventListener("click", function(event) {
           event.stopImmediatePropagation();
         }, false);
+
         formButton.addEventListener("click", function(event) { validateForm(event) }, false);
-        // formButton.addEventListener("click", function(event) {
-        //   event.stopImmediatePropagation();
-        // }, false);
+        formButton.addEventListener("mouseenter", function(event) { validateForm(event) }, false);
 
         formLogin.addEventListener("focus", checkVisibility, false);
         formPass.addEventListener("focus", checkVisibility, false);
@@ -331,7 +330,10 @@
   <div id="pageContainer" class="pageContainer">
     <div class="pageHeader">
       <!--<div class="headerLogo"><img src="vtb_logo.svg"></div>-->
-      <div class="headerLogo" style="color: white;">Логотип</div>
+      <div class="headerLogoContainer">
+        <div class="headerLogo">Логотип</div>
+        <div><button class="headerButton">Регистрация</button></div>
+      </div>
       <div class="headerContacts">
         <div class="headerLinks">Форма обратной связи</div>
         <div class="headerLinks">Онлайн-звонок</div>

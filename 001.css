@@ -6,6 +6,8 @@ body {
   font-family: "Roboto", "Segoe UI", "SansSerif";
   font-weight: lighter;
   background: url("photo-1467810563316-b5476525c0f9.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
   /*background-position: center center;*/
 }
 .cursorDefault {
@@ -35,11 +37,21 @@ body {
   top: 0;
   height: 50px;
 }
+.headerLogoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
 .headerLogo {
   margin-left: 50px;
+  margin-right: 50px;
+  color: white;
 }
 .headerLogo:hover {
   cursor: pointer;
+}
+.headerButton {
+  margin: 0;
 }
 .headerContacts {
   margin-right: 50px;
@@ -150,17 +162,17 @@ body {
   font-weight: normal;
   /*border: none;*/
   cursor: default;
-  background-color: rgba(255, 255, 255, 0);
-  border: 2px solid rgba(255, 255, 255, .3);
-  color: rgba(255, 255, 255, .3);
+  background-color: rgba(255, 255, 255, .2);
+  /*border: 2px solid rgba(255, 255, 255, .3);*/
+  color: rgba(0, 0, 0, .5);
   margin-top: 21px;
   transition-duration: 220ms;
   transition-timing-function: ease-out;
 }
 .formButton:hover {
-  background-color: rgba(255, 255, 255, 0);
-  border: 2px solid rgba(255, 255, 255, .3);
-  color: rgba(255, 255, 255, .3);
+  background-color: rgba(255, 255, 255, .2);
+  /*border: 2px solid rgba(255, 255, 255, .3);*/
+  color: rgba(0, 0, 0, .5);
 }
 .formButtonValid {
   background-color: rgba(0, 159, 223, 1);
