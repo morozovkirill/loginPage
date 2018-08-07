@@ -320,12 +320,21 @@
         var loaderContainer = document.createElement("div");
         var loader = document.createElement("div");
         var phoneIcon = document.createElement("div");
+        var ringer1 = document.createElement("div");
+        var ringer2 = document.createElement("div");
+        var ringer3 = document.createElement("div");
 
         shadow.classList.add("shadow");
         clicker.classList.add("clicker");
         loaderContainer.classList.add("loaderContainer");
         loader.classList.add("lds-dual-ring");
         phoneIcon.classList.add("loaderPhoneIcon");
+        ringer1.classList.add("ringer");
+        ringer2.classList.add("ringer");
+        ringer3.classList.add("ringer");
+        ringer1.classList.add("ringerAnimation1");
+        ringer2.classList.add("ringerAnimation2");
+        ringer3.classList.add("ringerAnimation3");
 
         phoneIcon.innerHTML = "" +
           "<svg width=\"50px\" height=\"50px\" viewBox=\"0 0 50 50\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n" +
@@ -338,6 +347,9 @@
         var shadowElem = document.body.appendChild(shadow);
         var clickerElem = shadow.appendChild(clicker);
         var loaderElem = clicker.appendChild(loaderContainer);
+        loaderContainer.appendChild(ringer1);
+        loaderContainer.appendChild(ringer2);
+        loaderContainer.appendChild(ringer3);
         loaderContainer.appendChild(phoneIcon);
         loaderContainer.appendChild(loader);
 
