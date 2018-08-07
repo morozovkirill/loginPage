@@ -222,15 +222,17 @@
       function validateForm(event) {
         event.stopImmediatePropagation();
         if (!formPass.value) {
+          focusForm();
           pageSubTitle.innerText = "Вы не ввели пароль";
           pageSubTitle.classList.remove("hidden");
         }
         if (!formLogin.value) {
+          focusForm();
           pageSubTitle.innerText = "Вы не ввели логин";
           pageSubTitle.classList.remove("hidden");
         }
         if (formPass.value && formLogin.value && event.type === "click") {
-          // pageSubTitle.innerHTML = "Неверный логин или пароль. <span class='pageSubTitleLink'>Забыли логин</span> или <span class='pageSubTitleLink'>хотите открыть счет</span>?";
+          focusForm();
           pageSubTitle.innerHTML = "Неверный логин или пароль<button class='smallButton'>Восстановить пароль</button>";
           pageSubTitle.classList.remove("hidden");
         }
@@ -248,6 +250,38 @@
           checkboxPointer.classList.remove("checkboxPointerOn");
           isCheckboxOn = false;
         }
+      }
+
+      function renderCall() {
+        var shadow = document.createElement("div");
+        var clicker = document.createElement("div");
+        var loaderContainer = document.createElement("div");
+        var loader = document.createElement("div");
+        var phoneIcon = document.createElement("div");
+
+        shadow.classList.add("shadow");
+        clicker.classList.add("clicker");
+        loaderContainer.classList.add("loaderContainer");
+        loader.classList.add("lds-dual-ring");
+        phoneIcon.classList.add("loaderPhoneIcon");
+
+        phoneIcon.innerHTML = "" +
+          "<svg width=\"50px\" height=\"50px\" viewBox=\"0 0 50 50\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n" +
+          "    <defs></defs>\n" +
+          "    <g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n" +
+          "        <path d=\"M49.9910121,39.0262585 C49.8215392,38.0145854 49.1888316,37.1402522 48.2807275,36.6628306 C45.0628587,34.7376375 41.8373887,32.8301763 38.6043173,30.9404473 C37.0390849,30.0099659 35.0398426,30.2739536 33.7699129,31.5788008 C32.8729636,32.4755355 31.9836156,33.3722702 31.0790651,34.2918033 C30.9773122,34.4233261 30.8029838,34.4753064 30.645793,34.4209939 C29.7583387,34.22436 28.9137078,33.869082 28.1525781,33.3722702 C24.0265878,30.781405 20.4559592,27.3976101 17.6476301,23.4169951 C16.7225658,22.2102924 16.0245755,20.8455457 15.5876873,19.3892883 C15.509475,19.2123489 15.5629289,19.0048715 15.7169088,18.8877248 C16.5226429,18.0973824 17.3182419,17.2994405 18.103706,16.4938991 C19.3068634,15.3253325 19.5692703,13.492046 18.7422122,12.0330239 L16.6366618,7.99771774 L13.4441306,1.9181604 C12.9821107,0.938368519 12.082204,0.236101538 11.0193271,0.0258981723 C10.0646041,-0.100710911 9.1075436,0.241823475 8.45009955,0.945431221 C6.16972008,3.22526523 3.80572671,5.55829536 1.43413206,7.95972051 C0.664812972,8.75454627 0.185531629,9.78515621 0.0735056471,10.8855075 C-0.0914417961,12.4836992 0.0217156151,14.0983777 0.407961302,15.65796 C1.31591664,19.5709044 2.91161176,23.291587 5.12074553,26.6467599 C7.72797939,30.8188561 11.0725359,34.6945739 15.9753518,39.2162447 C19.9557694,42.937917 24.5517073,45.9411466 29.5588121,48.0923984 C32.2764345,49.2627829 35.1905676,49.9099266 38.1482415,49.9998595 L38.3534756,49.9998595 C39.759269,50.0100659 41.1119742,49.4636491 42.1161017,48.4799702 C43.798515,46.8232908 45.4758608,45.1615452 47.1481391,43.4947332 L48.8736262,41.7772582 C49.6542446,41.0842399 50.0673472,40.067183 49.9910121,39.0262585 Z\" id=\"Path\" fill=\"#FFFFFF\"></path>\n" +
+          "    </g>\n" +
+          "</svg>";
+
+        var shadowElem = document.body.appendChild(shadow);
+        var clickerElem = shadow.appendChild(clicker);
+        var loaderElem = clicker.appendChild(loaderContainer);
+        loaderContainer.appendChild(phoneIcon);
+        loaderContainer.appendChild(loader);
+
+        clickerElem.addEventListener("click", function () {
+          hidePopup(shadowElem)
+        }, false);
       }
 
       window.onload = function() {
@@ -270,6 +304,8 @@
         var iconFeatures = document.getElementById("iconFeatures");
         var iconNews = document.getElementById("iconNews");
         var iconSafety = document.getElementById("iconSafety");
+
+        var onlineCall = document.getElementById("onlineCall");
 
         var clickerElem2 = document.getElementById("pageContainer");
 
@@ -329,7 +365,7 @@
           })();
         }
 
-        // Create event handler to show popup when logotype clicked
+        // Create event handler to show popup when icon clicked
         for (i = 0; i < logotypes.length; i++) {
           (function() {
           var logotype = logotypes[i];
@@ -338,6 +374,9 @@
           }, false);
           })();
         }
+
+        // Online call clicked
+        onlineCall.addEventListener("click", renderCall, false)
       }
 
     </script>
@@ -353,7 +392,7 @@
       </div>
       <div class="headerContacts">
         <div class="headerLinks">Форма обратной связи</div>
-        <div class="headerLinks">Онлайн-звонок</div>
+        <div id="onlineCall" class="headerLinks">Онлайн-звонок</div>
         <div class="headerContactsPhone">8 (495) 123-45-67</div>
       </div>
     </div>
