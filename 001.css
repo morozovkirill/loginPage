@@ -182,7 +182,7 @@ body {
   color: rgba(0, 0, 0, .5);
 }
 .formButtonValid {
-  background-color: rgb(222, 9, 100);
+  background-color: rgb(26, 119, 222);
   /*background-color: rgba(0, 159, 223, 1);*/
   border: none;
   /*border-color: rgba(255, 255, 255, .5);*/
@@ -191,7 +191,7 @@ body {
   transition-timing-function: ease-out;
 }
 .formButtonValid:hover {
-  background-color: rgb(242, 50, 122);
+  background-color: rgb(47, 144, 234);
   /*background-color: rgb(7, 182, 237);*/
   border: none;
   color: rgba(255, 255, 255, 1);
@@ -266,8 +266,8 @@ input:focus {
   cursor: pointer;
 }
 .checkboxBackOn {
-  border-color: rgb(222, 9, 100);
-  background-color: rgb(222, 9, 100);
+  border-color: rgb(26, 119, 222);
+  background-color: rgb(26, 119, 222);
 }
 .checkboxPointer {
   width: 22px;
@@ -514,4 +514,33 @@ button:focus {
   100% {
     transform: rotate(360deg);
   }
+}
+.popupInput {
+  width: 300px;
+  height: 40px;
+  margin-top: 32;
+  font-size: 18px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  box-shadow: none;
+}
+.popupInput:focus {
+  box-shadow: none;
+  border: 1px solid #dddddd;
+}
+textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+.popupTextarea {
+  width: 500px;
+  height: 200px;
+  padding-left: 8px;
+  padding-top: 8px;
+  margin-top: 32px;
+  font-size: 18px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  box-shadow: none;
+  resize: none;
 }

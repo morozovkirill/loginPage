@@ -36,7 +36,7 @@
         "<li>Переводы клиентам банка по номеру телефона, оформление вкладов и кредитов и другие удобные преимущества" +
         "</ul>"
       ];
-      var links = ["Узнать все возможности", "Больше новостей", "Больше советов ", "Веб-сайт"];
+      var links = ["Узнать все возможности", "Больше новостей", "Подробнее о безопасности", "Веб-сайт"];
 
       var logotypesCount = 3;
 
@@ -57,6 +57,23 @@
           imgId: "icon" + i,
         }
       }
+
+      var registerHeader = "Стать клиентом";
+      var registerText = "Если вы еще не клиент банка, оставьте свой номер телефона и наш менеджер свяжется с вами. Он ответит на все ваши вопросы о продуктах банка и поможет оформить заявку.<br><br>" +
+        "Ваш телефон<br><input class='popupInput' style='margin-top: 0px;'><br><br>" +
+        "Как к вам обращаться<br><input class='popupInput' style='margin-top: 0px;'>";
+      var registerLink = "Отправить";
+
+      var feedbackHeader = "Обратная связь";
+      var feedbackText = "Оставьте сообщение, мы обязательно рассмотрим его в кратчайшие сроки.<br>" +
+        "<textarea class='popupTextarea'>";
+      var feedbackLink = "Отправить";
+
+      var restoreHeader = "Восстановление\nдоступа";
+      var restoreText = "Если вы забыли логин, позвоните пожалуйста в службу поддержки по номеру: 8&nbsp;(495)&nbsp;123-45-67 и наш менеджер поможет вам.<br><br>Если вы забыли пароль, введите номер телефона и мы вышлем вам временный пароль для доступа в интернет банк.<br>" +
+        "<input class='popupInput'>";
+      var restoreLink = "Получить пароль";
+
 
       // Show logotype circle background on hover
       function showBG(id) {
@@ -127,38 +144,51 @@
         }
 
         function renderContent(type, logo, popupContent, shadowElem) {
-          if (type === "other") {
+          // Create new html elements for popup
+          var popupHeader = document.createElement("div");
+          var popupText = document.createElement("div");
+          var popupButton = document.createElement("button");
 
+          // Add style classes to elements
+          popupHeader.classList.add("popupHeader");
+          popupButton.classList.add("popupButton");
+
+          if (type === "restore") {
+            popupHeader.innerText = restoreHeader;
+            popupText.innerHTML = restoreText;
+            popupButton.innerText = restoreLink;
+          }
+          if (type === "feedback") {
+            popupHeader.innerText = feedbackHeader;
+            popupText.innerHTML = feedbackText;
+            popupButton.innerText = feedbackLink;
+          }
+          if (type === "register") {
+            popupHeader.innerText = registerHeader;
+            popupText.innerHTML = registerText;
+            popupButton.innerText = registerLink;
           }
           if (type === "activity") {
-            if (!isFocus) {
-              // Create new html elements for popup
-              var popupHeader = document.createElement("div");
-              var popupText = document.createElement("div");
-              var popupButton = document.createElement("button");
-
-              // Add style classes to elements
-              popupHeader.classList.add("popupHeader");
-              popupButton.classList.add("popupButton");
-
-              popupHeader.innerText = logo.header;
-              popupText.innerHTML = logo.text;
-              popupButton.innerText = logo.link;
-
-              // // Push elements to DOM
-              popupContent.appendChild(popupHeader);
-              popupContent.appendChild(popupText);
-              popupContent.appendChild(popupButton);
-
-              popupButton.addEventListener("click", function () {
-                hidePopup(shadowElem)
-              }, false);
-            }
+            popupHeader.innerText = logo.header;
+            popupText.innerHTML = logo.text;
+            popupButton.innerText = logo.link;
           }
+
+          // // Push elements to DOM
+          popupContent.appendChild(popupHeader);
+          popupContent.appendChild(popupText);
+          popupContent.appendChild(popupButton);
+
+          popupButton.addEventListener("click", function () {
+            hidePopup(shadowElem)
+          }, false);
+
         }
 
-        var result = renderContainer();
-        renderContent(type, logo, result.popupContent, result.shadowElem);
+        if ((type === "activity" && !isFocus) || (type === "restore" || type === "feedback" || type === "register")) {
+          var result = renderContainer();
+          renderContent(type, logo, result.popupContent, result.shadowElem);
+        }
 
       }
 
@@ -265,7 +295,7 @@
         }
         if (formPass.value && formLogin.value && event.type === "click") {
           focusForm();
-          pageSubTitle.innerHTML = "Неверный логин или пароль<button class='smallButton'>Восстановить пароль</button>";
+          pageSubTitle.innerHTML = "Неверный логин или пароль<button class='smallButton' onclick='showPopup(\"restore\", undefined)'>Восстановить пароль</button>";
           pageSubTitle.classList.remove("hidden");
         }
       }
@@ -413,13 +443,13 @@
         onlineCall.addEventListener("click", renderCall, false);
         // Feedback form
         feedback.addEventListener("click", function() {
-          showPopup("other", undefined);
+          showPopup("feedback", undefined);
         }, false);
         formComment.addEventListener("click", function() {
-          showPopup("other", undefined);
+          showPopup("restore", undefined);
         }, false);
         registration.addEventListener("click", function() {
-          showPopup("other", undefined);
+          showPopup("register", undefined);
         }, false);
 
       }
