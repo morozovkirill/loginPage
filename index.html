@@ -6,6 +6,7 @@
     <script>
 
       var isFocus = false;
+      var isCheckboxOn = false;
 
       // Content
       var colors = ["#ffffff", "#ffffff", "#ffffff", "ffffff"];
@@ -36,11 +37,6 @@
         "</ul>"
       ];
       var links = ["Узнать все возможности", "Больше новостей", "Больше советов ", "Веб-сайт"];
-      var images = [
-        ["icon_features.svg", "icon_features_black.svg"],
-        ["icon_news.svg", "icon_news_black.svg"],
-        ["icon_safety.svg", "icon_safety_black.svg"],
-      ];
 
       var logotypesCount = 3;
 
@@ -58,7 +54,6 @@
           text: texts[i],
           link: links[i],
           img: "",
-          // imgNames: images[i],
           imgId: "icon" + i,
         }
       }
@@ -69,7 +64,6 @@
         logotypes[id].bg.classList.add("logoBackgroundShow");
         logotypes[id].img.classList.remove("svgWhite");
         logotypes[id].img.classList.add("svgBlack");
-        // logotypes[id].img.src = logotypes[id].imgNames[1];
       }
 
       // Remove logotype circle background
@@ -78,7 +72,6 @@
         logotypes[id].bg.classList.add("logoBackgroundHide");
         logotypes[id].img.classList.remove("svgBlack");
         logotypes[id].img.classList.add("svgWhite");
-        // logotypes[id].img.src = logotypes[id].imgNames[0];
       }
 
       // Show popup if clicked on logotype
@@ -243,6 +236,20 @@
         }
       }
 
+      function toggleCheckbox(event) {
+        event.stopImmediatePropagation();
+        if (!isCheckboxOn) {
+          checkboxBack.classList.add("checkboxBackOn");
+          checkboxPointer.classList.add("checkboxPointerOn");
+          isCheckboxOn = true;
+        }
+        else {
+          checkboxBack.classList.remove("checkboxBackOn");
+          checkboxPointer.classList.remove("checkboxPointerOn");
+          isCheckboxOn = false;
+        }
+      }
+
       window.onload = function() {
 
         var logoRow = document.getElementById("logoRow");
@@ -252,7 +259,9 @@
         var formPassContainer = document.getElementById("formPassContainer");
         var formButtonContainer = document.getElementById("formButtonContainer");
         var formButton = document.getElementById("formButton");
-        var formCheckbox = document.getElementById("formCheckbox");
+        var formCheckboxTitle = document.getElementById("formCheckboxTitle");
+        var checkboxBack = document.getElementById("checkboxBack");
+        var checkboxPointer = document.getElementById("checkboxPointer");
         var formTitle = document.getElementById("formTitle");
         var pageContainer = document.getElementById("pageContainer");
         var pageTitle = document.getElementById("pageTitle");
@@ -281,14 +290,17 @@
         formPass.addEventListener("click", function(event) {
           event.stopImmediatePropagation();
         }, false);
-        formCheckbox.addEventListener("click", function(event) {
-          event.stopImmediatePropagation();
+
+        formCheckboxTitle.addEventListener("click", function(event) {
+          toggleCheckbox(event);
         }, false);
-        formTitle.addEventListener("click", function(event) {
-          event.stopImmediatePropagation();
+        checkboxBack.addEventListener("click", function(event) {
+          toggleCheckbox(event);
         }, false);
 
-        formButton.addEventListener("click", function(event) { validateForm(event) }, false);
+        formButton.addEventListener("click", function(event) {
+          validateForm(event)
+        }, false);
 
         formLogin.addEventListener("focus", checkVisibility, false);
         formPass.addEventListener("focus", checkVisibility, false);
@@ -331,6 +343,7 @@
     </script>
   </head>
   <body>
+  <div class="fadeBackground"></div>
   <div id="pageContainer" class="pageContainer">
     <div class="pageHeader">
       <!--<div class="headerLogo"><img src="vtb_logo.svg"></div>-->
@@ -359,8 +372,12 @@
           <div class="formTitle">Пароль</div>
           <div><input id="formPass" type="password"></div>
           <div class="formCheckboxContainer">
-            <div id="formCheckbox" class="formCheckbox"></div>
-            <div id="formTitle" class="formTitle formCheckboxTitle">Запомнить меня</div>
+            <div id="formCheckbox">
+              <div id="checkboxBack" class="checkboxBack">
+                <div id="checkboxPointer" class="checkboxPointer"></div>
+              </div>
+            </div>
+            <div id="formCheckboxTitle" class="formTitle formCheckboxTitle">Запомнить меня</div>
           </div>
         </div>
         <div id="formButtonContainer" class="formButtonContainer hidden">
