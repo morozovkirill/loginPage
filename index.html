@@ -75,9 +75,9 @@
       }
 
       // Show popup if clicked on logotype
-      function showPopup(logo) {
+      function showPopup(type, logo) {
 
-        if (!isFocus) {
+        function renderContainer() {
           // Create new html elements for popup
           var shadow = document.createElement("div");
           var clicker = document.createElement("div");
@@ -85,9 +85,6 @@
           var popup = document.createElement("div");
           var popupContent = document.createElement("div");
           var popupCloseIcon = document.createElement("div");
-          var popupHeader = document.createElement("div");
-          var popupText = document.createElement("div");
-          var popupButton = document.createElement("button");
 
           // Add style classes to elements
           shadow.classList.add("shadow");
@@ -95,16 +92,12 @@
           popupContainer.classList.add("popupContainer");
           popup.classList.add("popup");
           popupContent.classList.add("popupContent");
-          popup.style.backgroundColor = logo.bgColor;
+          popup.style.backgroundColor = "#ffffff";
+          // popup.style.backgroundColor = logo.bgColor;
           popupCloseIcon.classList.add("popupCloseIcon");
-          popupHeader.classList.add("popupHeader");
-          popupButton.classList.add("popupButton");
 
           // Add content
           popupCloseIcon.innerHTML = "<img src='icon_close.svg'>";
-          popupHeader.innerText = logo.header;
-          popupText.innerHTML = logo.text;
-          popupButton.innerText = logo.link;
 
           // Push elements to DOM
           var shadowElem = document.body.appendChild(shadow);
@@ -113,21 +106,60 @@
           var popupElem = popupContainer.appendChild(popup);
           popup.appendChild(popupContent);
           popupContent.appendChild(popupCloseIcon);
-          popupContent.appendChild(popupHeader);
-          popupContent.appendChild(popupText);
-          popupContent.appendChild(popupButton);
 
           // Create event handlers to hide popup
-          popupCloseIcon.addEventListener("click", function () {
-            hidePopup(shadowElem)
-          }, false);
           clickerElem.addEventListener("click", function () {
             hidePopup(shadowElem)
           }, false);
           popupElem.addEventListener("click", function (event) {
             event.stopImmediatePropagation();
-          }, false)
+          }, false);
+          popupCloseIcon.addEventListener("click", function () {
+            hidePopup(shadowElem)
+          }, false);
+
+          var result = {
+            "popupContent": popupContent,
+            "shadowElem": shadowElem
+          }
+
+          return result;
         }
+
+        function renderContent(type, logo, popupContent, shadowElem) {
+          if (type === "other") {
+
+          }
+          if (type === "activity") {
+            if (!isFocus) {
+              // Create new html elements for popup
+              var popupHeader = document.createElement("div");
+              var popupText = document.createElement("div");
+              var popupButton = document.createElement("button");
+
+              // Add style classes to elements
+              popupHeader.classList.add("popupHeader");
+              popupButton.classList.add("popupButton");
+
+              popupHeader.innerText = logo.header;
+              popupText.innerHTML = logo.text;
+              popupButton.innerText = logo.link;
+
+              // // Push elements to DOM
+              popupContent.appendChild(popupHeader);
+              popupContent.appendChild(popupText);
+              popupContent.appendChild(popupButton);
+
+              popupButton.addEventListener("click", function () {
+                hidePopup(shadowElem)
+              }, false);
+            }
+          }
+        }
+
+        var result = renderContainer();
+        renderContent(type, logo, result.popupContent, result.shadowElem);
+
       }
 
       // Hide popup
@@ -306,6 +338,8 @@
         var iconSafety = document.getElementById("iconSafety");
 
         var onlineCall = document.getElementById("onlineCall");
+        var feedback = document.getElementById("feedback");
+        var registration = document.getElementById("registration")
 
         var clickerElem2 = document.getElementById("pageContainer");
 
@@ -320,9 +354,9 @@
         formLogin.addEventListener("click", function(event) {
           event.stopImmediatePropagation();
         }, false);
-        formComment.addEventListener("click", function(event) {
-          event.stopImmediatePropagation();
-        }, false);
+        // formComment.addEventListener("click", function(event) {
+        //   event.stopImmediatePropagation();
+        // }, false);
         formPass.addEventListener("click", function(event) {
           event.stopImmediatePropagation();
         }, false);
@@ -370,13 +404,24 @@
           (function() {
           var logotype = logotypes[i];
           logotypes[i].wrapperBg.addEventListener("click", function () {
-            showPopup(logotype);
+            showPopup("activity", logotype);
           }, false);
           })();
         }
 
         // Online call clicked
-        onlineCall.addEventListener("click", renderCall, false)
+        onlineCall.addEventListener("click", renderCall, false);
+        // Feedback form
+        feedback.addEventListener("click", function() {
+          showPopup("other", undefined);
+        }, false);
+        formComment.addEventListener("click", function() {
+          showPopup("other", undefined);
+        }, false);
+        registration.addEventListener("click", function() {
+          showPopup("other", undefined);
+        }, false);
+
       }
 
     </script>
@@ -388,10 +433,10 @@
       <!--<div class="headerLogo"><img src="vtb_logo.svg"></div>-->
       <div class="headerLogoContainer">
         <div class="headerLogo">Логотип</div>
-        <div><button class="headerButton">Стать клиентом</button></div>
+        <div><button id="registration" class="headerButton">Стать клиентом</button></div>
       </div>
       <div class="headerContacts">
-        <div class="headerLinks">Форма обратной связи</div>
+        <div id="feedback" class="headerLinks">Форма обратной связи</div>
         <div id="onlineCall" class="headerLinks">Онлайн-звонок</div>
         <div class="headerContactsPhone">8 (495) 123-45-67</div>
       </div>
