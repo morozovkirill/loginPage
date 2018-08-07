@@ -527,13 +527,13 @@ button:focus {
   border-radius: 50%;
 }
 .ringerAnimation1 {
-  animation: ringerAnimation 2s ease-out infinite;
+  animation: ringerAnimation 3s ease-out infinite;
 }
 .ringerAnimation2 {
-  animation: ringerAnimation 2s ease-out .4s infinite;
+  animation: ringerAnimation 3s ease-out .4s infinite;
 }
 .ringerAnimation3 {
-  animation: ringerAnimation 2s ease-out .8s infinite;
+  animation: ringerAnimation 3s ease-out .8s infinite;
 }
 @keyframes ringerAnimation {
   0% {
@@ -544,7 +544,7 @@ button:focus {
     transform: scale(1);
     border-color: rgba(255, 255, 255, .15);
   }
-  40% {
+  30% {
     transform: scale(2);
     border-color: rgba(255, 255, 255, 0);
   }
